@@ -12,19 +12,20 @@ import Poster from '@/components/Poster';
 import withStyles from 'withStyles';
 import styles from './styles.scss';
 
-const MoviesDetailsPage = ({ movie = {}, t }) => (
+const MoviesDetailsPage = ({ movie = {}, t, movieId }) => (
   <div className={styles.root}>
     <div className={styles.poster}>
       <Poster src={movie.poster} title={movie.title} />
     </div>
     <div className={styles.content}>
-      <div className={styles.title}>
-        { movie.title }
-      </div>
+      <div className={styles.title}>{movie.title}</div>
       <div className={styles.info}>
-        <p>{ movie.year }</p>
-        <p>{ movie.description }</p>
-        <p>{ movie.director }</p>
+        <p>{movie.year}</p>
+        <p>{movie.description}</p>
+        <p>{movie.director}</p>
+        <p>
+          <Link to={`/movies/${movieId}/edit`}>{t('Edit movie')}</Link>
+        </p>
         <p>
           <Link to="/movies">{t('Back to the list of movies')}</Link>
         </p>
@@ -38,13 +39,14 @@ export default compose(
   translate(),
   withRouter,
   provideHooks({
-    fetch: ({ dispatch, params, setProps }) => dispatch(fetchMovie(params.id)).then((response) => {
-      setProps({
-        movieId: response.payload.result,
-      });
-    }),
+    fetch: ({ dispatch, params, setProps }) =>
+      dispatch(fetchMovie(params.id)).then((response) => {
+        setProps({
+          movieId: response.payload.result,
+        });
+      }),
   }),
   connect((state, ownProps) => ({
     movie: getMovie(state, ownProps.movieId),
-  })),
+  }))
 )(MoviesDetailsPage);
