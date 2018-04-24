@@ -29,7 +29,7 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
       <Field component={FormField} inputComponent={TextInput} name="director" />
     </FormRow>
     <FormRow>
-      <Button type="submit">{(isEdit && t('Edit')) || t('Create')}</Button>
+      <Button type="submit">{isEdit ? t('Edit') : t('Create')}</Button>
     </FormRow>
   </Form>
 );
