@@ -36,7 +36,7 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
 
 export default compose(
   translate(),
-  withProps(({ initialValues }) => ({
+  withProps(({ initialValues = {} }) => ({
     isEdit: Boolean(initialValues.id),
   })),
   reduxForm({
