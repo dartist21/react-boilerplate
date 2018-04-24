@@ -55,6 +55,7 @@ export default compose(
       },
       year: {
         required: true,
+        year: true,
       },
       director: {
         required: true,

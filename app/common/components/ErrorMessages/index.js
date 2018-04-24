@@ -8,6 +8,7 @@ const ErrorMessagesTranslated = ({ children, t, ...rest }) => (
     {children}
     <ErrorMessage when="required">{t('Required field')}</ErrorMessage>
     <ErrorMessage when="imageUrl">{t('Invalid image url format')}</ErrorMessage>
+    <ErrorMessage when="year">{t('Invalid year format')}</ErrorMessage>
   </ErrorMessages>
 );
 
