@@ -32,7 +32,7 @@ const MoviesDetailsPage = ({ movie = {}, t, movieId, handleDelete }) => (
         </p>
       </div>
       <div className={styles.actions}>
-        <Button onClick={handleDelete} color={'red'}>
+        <Button onClick={handleDelete} color="red">
           {t('Delete movie')}
         </Button>
       </div>
