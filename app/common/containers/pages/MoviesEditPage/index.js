@@ -1,7 +1,7 @@
 import React from 'react';
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter, Link } from 'react-router';
 import { translate } from 'react-i18next';
 import { provideHooks } from 'redial';
 import { updateMovie, fetchMovie } from '@/redux/data/movies';
@@ -12,11 +12,12 @@ import MovieForm from '@/containers/forms/MovieForm';
 import withStyles from 'withStyles';
 import styles from './styles.scss';
 
-const MoviesEditPage = ({ onSubmit, movie }) => (
+const MoviesEditPage = ({ onSubmit, movie, movieId, t }) => (
   <div className={styles.root}>
-    <div>
-      <MovieForm onSubmit={onSubmit} initialValues={movie} />
-    </div>
+    <MovieForm onSubmit={onSubmit} initialValues={movie} />
+    <p className={styles.back}>
+      <Link to={`/movies/${movieId}`}>{t('Back to movie')}</Link>
+    </p>
   </div>
 );
 
