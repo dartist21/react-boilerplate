@@ -14,10 +14,13 @@ import styles from './styles.scss';
 
 const MoviesEditPage = ({ onSubmit, movie, movieId, t }) => (
   <div className={styles.root}>
-    <MovieForm onSubmit={onSubmit} initialValues={movie} />
+    <div className={styles.title}>{t('Edit movie')}</div>
     <p className={styles.back}>
       <Link to={`/movies/${movieId}`}>{t('Back to movie')}</Link>
     </p>
+    <div className={styles.form}>
+      <MovieForm onSubmit={onSubmit} initialValues={movie} />
+    </div>
   </div>
 );
 
