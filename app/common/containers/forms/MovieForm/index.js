@@ -48,6 +48,7 @@ export default compose(
       },
       poster: {
         required: true,
+        imageUrl: true,
       },
       description: {
         required: true,
