@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose } from 'recompose';
+import { compose, withProps } from 'recompose';
 import { reduxForm, Field } from 'redux-form';
 import { translate } from 'react-i18next';
 
@@ -11,7 +11,7 @@ import Button from '@/components/Button';
 
 import { reduxFormValidate } from 'react-nebo15-validate';
 
-const MovieForm = ({ handleSubmit, t }) => (
+const MovieForm = ({ handleSubmit, t, isEdit }) => (
   <Form onSubmit={handleSubmit}>
     <FormRow label={t('Title')}>
       <Field component={FormField} inputComponent={TextInput} name="title" />
@@ -29,13 +29,16 @@ const MovieForm = ({ handleSubmit, t }) => (
       <Field component={FormField} inputComponent={TextInput} name="director" />
     </FormRow>
     <FormRow>
-      <Button type="submit">{t('Create')}</Button>
+      <Button type="submit">{(isEdit && t('Edit')) || t('Create')}</Button>
     </FormRow>
   </Form>
 );
 
 export default compose(
   translate(),
+  withProps(({ initialValues }) => ({
+    isEdit: Boolean(initialValues.id),
+  })),
   reduxForm({
     form: 'movie-form',
     initialValues: {},
