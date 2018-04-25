@@ -8,6 +8,7 @@ import FormField from '@/components/FormField';
 import TextInput from '@/components/TextInput';
 import TextareaInput from '@/components/TextareaInput';
 import Button from '@/components/Button';
+import Checkbox from '@/components/Checkbox';
 
 import { reduxFormValidate } from 'react-nebo15-validate';
 
@@ -28,6 +29,13 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
     <FormRow label={t('Director')}>
       <Field component={FormField} inputComponent={TextInput} name="director" />
     </FormRow>
+    <FormRow label={t('Director')}>
+      <Field component={FormField} inputComponent={TextInput} name="director" />
+    </FormRow>
+    <FormRow>
+      <Field component={Checkbox} name="is_favorite" />
+      {/* <Checkbox /> */}
+    </FormRow>
     <FormRow>
       <Button type="submit">{isEdit ? t('Edit') : t('Create')}</Button>
     </FormRow>
@@ -41,7 +49,9 @@ export default compose(
   translate(),
   reduxForm({
     form: 'movie-form',
-    initialValues: {},
+    initialValues: {
+      is_favorite: false,
+    },
     validate: reduxFormValidate({
       title: {
         required: true,
