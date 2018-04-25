@@ -12,7 +12,7 @@ const MovieCard = ({ movie, ...rest }) => (
     </div>
     <div className={styles.content}>
       <div className={styles.title}>
-        { movie.title }
+        {movie.title} {movie.is_favorite && '⭐'}
       </div>
     </div>
   </div>
@@ -22,6 +22,4 @@ MovieCard.propTypes = {
   children: PropTypes.node,
 };
 
-export default compose(
-  withStyles(styles)
-)(MovieCard);
+export default compose(withStyles(styles))(MovieCard);

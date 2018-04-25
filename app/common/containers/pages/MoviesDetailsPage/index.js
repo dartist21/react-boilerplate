@@ -19,7 +19,9 @@ const MoviesDetailsPage = ({ movie = {}, t, movieId, handleDelete }) => (
       <Poster src={movie.poster} title={movie.title} />
     </div>
     <div className={styles.content}>
-      <div className={styles.title}>{movie.title}</div>
+      <div className={styles.title}>
+        {movie.title} {movie.is_favorite && '⭐'}
+      </div>
       <div className={styles.info}>
         <p>{movie.year}</p>
         <p>{movie.description}</p>
