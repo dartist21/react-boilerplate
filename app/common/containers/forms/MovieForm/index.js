@@ -1,5 +1,5 @@
 import React from 'react';
-import { compose, withProps } from 'recompose';
+import { compose, withPropsOnChange } from 'recompose';
 import { reduxForm, Field } from 'redux-form';
 import { translate } from 'react-i18next';
 
@@ -35,10 +35,10 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
 );
 
 export default compose(
-  translate(),
-  withProps(({ initialValues = {} }) => ({
+  withPropsOnChange(['initialValues.id'], ({ initialValues }) => ({
     isEdit: Boolean(initialValues.id),
   })),
+  translate(),
   reduxForm({
     form: 'movie-form',
     initialValues: {},
