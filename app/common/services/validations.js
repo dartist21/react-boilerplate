@@ -5,4 +5,7 @@ addValidation('imageUrl', (value) => {
   return PATTERNS_IMAGE_URL.test(value);
 });
 
-addValidation('year', value => !isNaN(Number(value)) && value <= new Date().getFullYear());
+addValidation(
+  'year',
+  value => !isNaN(Number(value)) && (value.length === 4) & (value <= new Date().getFullYear())
+);
