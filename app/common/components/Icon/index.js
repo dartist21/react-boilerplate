@@ -16,11 +16,13 @@ export const icons = [
   'eye',
   'arrows-expand',
   'arrows-reduce',
+  'star',
 ];
 
-const Icon = ({ name }) => React.createElement('i', {
-  className: classnames(styles.icon, styles[`icon-${name}`]),
-});
+const Icon = ({ name }) =>
+  React.createElement('i', {
+    className: classnames(styles.icon, styles[`icon-${name}`]),
+  });
 
 Icon.propTypes = {
   name: PropTypes.oneOf(icons).isRequired,

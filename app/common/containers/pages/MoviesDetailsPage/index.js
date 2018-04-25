@@ -9,6 +9,7 @@ import { getMovie } from '@/reducers';
 
 import Poster from '@/components/Poster';
 import Button from '@/components/Button';
+import Icon from '@/components/Icon';
 
 import withStyles from 'withStyles';
 import styles from './styles.scss';
@@ -20,7 +21,12 @@ const MoviesDetailsPage = ({ movie = {}, t, movieId, handleDelete }) => (
     </div>
     <div className={styles.content}>
       <div className={styles.title}>
-        {movie.title} {movie.is_favorite && '⭐'}
+        {movie.title}
+        {movie.is_favorite && (
+          <span className={styles.star}>
+            <Icon name="star" />
+          </span>
+        )}
       </div>
       <div className={styles.info}>
         <p>{movie.year}</p>

@@ -31,7 +31,6 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
     </FormRow>
     <FormRow>
       <Field component={Checkbox} name="is_favorite" />
-      {/* <Checkbox /> */}
     </FormRow>
     <FormRow>
       <Button type="submit">{isEdit ? t('Edit') : t('Create')}</Button>

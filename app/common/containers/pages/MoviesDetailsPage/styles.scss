@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 .root {
   display: flex;
   flex-direction: row;
@@ -36,4 +38,9 @@
 
 .actions {
   margin-top: 20px;
+}
+
+.star {
+  color: $yellow;
+  margin-left: 4px;
 }

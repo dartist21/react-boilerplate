@@ -1,3 +1,4 @@
+@import 'variables.scss';
 
 .root {
   position: relative;
@@ -46,4 +47,9 @@
 .title {
   font-size: 14px;
   font-weight: 600;
+}
+
+.star {
+  color: $yellow;
+  margin-left: 4px;
 }
