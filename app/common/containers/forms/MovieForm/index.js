@@ -29,9 +29,6 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
     <FormRow label={t('Director')}>
       <Field component={FormField} inputComponent={TextInput} name="director" />
     </FormRow>
-    <FormRow label={t('Director')}>
-      <Field component={FormField} inputComponent={TextInput} name="director" />
-    </FormRow>
     <FormRow>
       <Field component={Checkbox} name="is_favorite" />
       {/* <Checkbox /> */}
