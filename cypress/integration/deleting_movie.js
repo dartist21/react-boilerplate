@@ -1,13 +1,14 @@
-describe('Deleting film test', () => {
+describe('Delete movie test', () => {
   it('Deleting film', () => {
-    cy.request('/api/movies').then((resp) => {
-      const film = resp.body.data.pop();
+    cy.visit('/movies/');
 
-      cy.visit(`/movies/${film.id}/`);
+    cy
+      .get('div[class*=MovieCard]')
+      .first()
+      .click();
 
-      cy.get('button').click();
+    cy.get('button').click();
 
-      cy.location('pathname').should('eq', '/movies');
-    });
+    cy.location('pathname').should('eq', '/movies');
   });
 });
