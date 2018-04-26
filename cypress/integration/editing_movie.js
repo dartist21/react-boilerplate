@@ -1,42 +1,55 @@
-describe('Editing film test', () => {
-  it('Editing film', () => {
-    cy.request('/api/movies').then((resp) => {
-      const film = resp.body.data.pop();
+describe('Edit movie test', () => {
+  beforeEach(() => {
+    cy.fixture('movie').as('movie');
+  });
 
-      cy.visit(`/movies/${film.id}/edit`);
+  it('Editing movie', function () {
+    cy.visit('/movies/');
 
-      cy
-        .get('input[name=title]')
-        .clear()
-        .type('Test title');
+    cy
+      .get('div[class*=MovieCard]')
+      .first()
+      .click();
 
-      cy
-        .get('input[name=poster]')
-        .clear()
-        .type(
-          'https://ia.media-imdb.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg'
-        );
+    cy.contains('Edit movie').click();
 
-      cy
-        .get('textarea[name=description]')
-        .clear()
-        .type('Test description');
+    cy
+      .get('input[name=title]')
+      .clear()
+      .type(this.movie.title)
+      .should('have.value', this.movie.title);
 
-      cy
-        .get('input[name=year]')
-        .clear()
-        .type('2000');
+    cy
+      .get('input[name=poster]')
+      .clear()
+      .type(this.movie.poster)
+      .should('have.value', this.movie.poster);
 
-      cy
-        .get('input[name=director]')
-        .clear()
-        .type('Test director');
+    cy
+      .get('textarea[name=description]')
+      .clear()
+      .type(this.movie.description)
+      .should('have.value', this.movie.description);
 
-      cy.get('input[id=is_favorite]').click();
+    cy
+      .get('input[name=year]')
+      .clear()
+      .type(this.movie.year)
+      .should('have.value', this.movie.year);
 
-      cy.get('button').click();
+    cy
+      .get('input[name=director]')
+      .clear()
+      .type(this.movie.director)
+      .should('have.value', this.movie.director);
 
-      cy.location('pathname').should('eq', `/movies/${film.id}`);
-    });
+    cy
+      .get('input[id=is_favorite]')
+      .check()
+      .should('be.checked');
+
+    cy.get('button').click();
+
+    cy.location('pathname').should('not.contains', 'edit');
   });
 });
