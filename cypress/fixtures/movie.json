@@ -1,0 +1,11 @@
+{
+  "title": "Dunkirk",
+  "poster":
+    "https://ia.media-imdb.com/images/M/MV5BN2YyZjQ0NTEtNzU5MS00NGZkLTg0MTEtYzJmMWY3MWRhZjM2XkEyXkFqcGdeQXVyMDA4NzMyOA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+  "description":
+    "Allied soldiers from Belgium, the British Empire and France are surrounded by the German Army, and evacuated during a fierce battle in World War II.",
+  "email": "hello@cypress.io",
+  "year": "2017",
+  "director": "Christopher Nolan",
+  "is_favorite": true
+}
