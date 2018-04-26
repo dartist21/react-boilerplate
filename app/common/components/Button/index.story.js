@@ -6,4 +6,4 @@ import Button from './index';
 storiesOf('components/Button', module)
   .add('General', () => <Button>Default</Button>)
   .add('Block', () => <Button block>Block</Button>)
-  .add('Red', () => <Button red>Red</Button>);
+  .add('Red', () => <Button color="red">Red</Button>);
