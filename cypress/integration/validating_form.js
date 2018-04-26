@@ -1,3 +1,5 @@
+import { openEditPage } from '../helpers';
+
 function submitAndCheckLocation() {
   cy.get('form').submit();
   cy.location('pathname').should('contains', 'edit');
@@ -9,14 +11,7 @@ describe('Validating form test', () => {
   });
 
   it('validating form', function () {
-    cy.visit('/movies/');
-
-    cy
-      .get('div[class*=MovieCard]')
-      .first()
-      .click();
-
-    cy.contains('Edit movie').click();
+    openEditPage();
 
     cy.get('input[name=title]').clear();
     submitAndCheckLocation();

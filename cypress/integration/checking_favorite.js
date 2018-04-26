@@ -1,17 +1,12 @@
+import { openEditPage } from '../helpers';
+
 describe('Checking favorite film test', () => {
   beforeEach(() => {
     cy.fixture('movie').as('movie');
   });
 
   it('Checking favorite film', function () {
-    cy.visit('/movies/');
-
-    cy
-      .get('div[class*=MovieCard]')
-      .first()
-      .click();
-
-    cy.contains('Edit movie').click();
+    openEditPage();
 
     cy
       .get('input[name=title]')
