@@ -6,7 +6,7 @@ import { translate } from 'react-i18next';
 
 import styles from './styles.scss';
 
-const Checkbox = ({ t, i18nLoadedAt, input }) => (
+const Checkbox = ({ t, input }) => (
   <div>
     <input
       type="checkbox"
@@ -15,7 +15,7 @@ const Checkbox = ({ t, i18nLoadedAt, input }) => (
       checked={input.value}
       {...input}
     />
-    <label className={styles.label} htmlFor={input.name} {...i18nLoadedAt}>
+    <label className={styles.label} htmlFor={input.name}>
       {input.value ? t('Remove from favorite') : t('Add to favorite')}
     </label>
   </div>
