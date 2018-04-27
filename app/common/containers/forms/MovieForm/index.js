@@ -35,7 +35,7 @@ const MovieForm = ({ handleSubmit, t, isEdit }) => (
 );
 
 export default compose(
-  withPropsOnChange(['initialValues.id'], ({ initialValues = {} }) => ({
+  withPropsOnChange(['initialValues'], ({ initialValues = {} }) => ({
     isEdit: Boolean(initialValues.id),
   })),
   translate(),
