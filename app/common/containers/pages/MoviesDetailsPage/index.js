@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router';
 import { provideHooks } from 'redial';
 import { translate } from 'react-i18next';
 import { fetchMovie, deleteMovie } from '@/redux/data/movies';
+import { fetchActors } from '@/redux/data/actors';
 import { getMovie } from '@/reducers';
 
 import Poster from '@/components/Poster';
@@ -31,7 +32,17 @@ const MoviesDetailsPage = ({ movie = {}, t, movieId, handleDelete }) => (
       <div className={styles.info}>
         <p>{movie.year}</p>
         <p>{movie.description}</p>
-        <p>{movie.director}</p>
+        <p>Director: {movie.director}</p>
+        <p>
+          Actors:{' '}
+          {movie.actors.length &&
+            movie.actors.map((actor, i) => (
+              <span key={actor.id}>
+                <Link to={`/actors/${actor.id}`}>{actor.name}</Link>
+                {i !== movie.actors.length - 1 && ', '}
+              </span>
+            ))}
+        </p>
         <p>
           <Link to={`/movies/${movieId}/edit`}>{t('Edit movie')}</Link>
         </p>
@@ -54,9 +65,9 @@ export default compose(
   withRouter,
   provideHooks({
     fetch: ({ dispatch, params, setProps }) =>
-      dispatch(fetchMovie(params.id)).then((response) => {
+      Promise.all([dispatch(fetchMovie(params.id)), dispatch(fetchActors())]).then((response) => {
         setProps({
-          movieId: response.payload.result,
+          movieId: response[0].payload.result,
         });
       }),
   }),

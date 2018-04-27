@@ -8,15 +8,21 @@ router.use(Express.json());
 const actors = [
   {
     id: 1,
-    name: 'Actor 1',
+    name: 'Thomas Steven Middleditch',
+    born: 'March 10, 1982',
+    description: 'Canadian actor and television writer.',
   },
   {
     id: 2,
-    name: 'Actor 2',
+    name: 'Zach Woods',
+    born: 'September 25, 1984',
+    description: 'American actor and comedian.',
   },
   {
     id: 3,
-    name: 'Actor 3',
+    name: 'Todd Joseph Miller',
+    born: 'June 4, 1981',
+    description: ' American actor, stand-up comedian, producer, and writer.',
   },
 ];
 
