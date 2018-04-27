@@ -5,6 +5,21 @@ import { find, findIndex, omit } from 'lodash';
 const router = new Express.Router();
 router.use(Express.json());
 
+const actors = [
+  {
+    id: 1,
+    name: 'Actor 1',
+  },
+  {
+    id: 2,
+    name: 'Actor 2',
+  },
+  {
+    id: 3,
+    name: 'Actor 3',
+  },
+];
+
 let movies = [
   {
     id: uuid(),
@@ -17,6 +32,7 @@ let movies = [
     director: 'Frank Darabont',
     genres: ['Crime', 'Drama'],
     is_favorite: false,
+    actors: [1, 2],
   },
   {
     id: uuid(),
@@ -29,6 +45,7 @@ let movies = [
     director: 'Francis Ford Coppola',
     genres: ['Crime', 'Drama'],
     is_favorite: false,
+    actors: [2, 3],
   },
   {
     id: uuid(),
@@ -41,8 +58,15 @@ let movies = [
     director: 'Christopher Nolan',
     genres: ['Action', 'Crime', 'Drama'],
     is_favorite: true,
+    actors: [3],
   },
 ];
+
+router.get('/actors', (req, res) => {
+  res.json({
+    data: actors,
+  });
+});
 
 router.get('/movies', (req, res) => {
   res.json({
