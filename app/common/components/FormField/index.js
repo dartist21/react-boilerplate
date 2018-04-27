@@ -8,9 +8,9 @@ import styles from './styles.scss';
 const FormField = ({ input, meta, showError, inputComponent: InputComponent }) => (
   <div className={styles.root}>
     <div className={styles.input}>
-      <InputComponent {...input} error={showError && meta.error} />
+      <InputComponent {...input} error={!!(showError && meta.error)} />
     </div>
-    { showError && (
+    {showError && (
       <div className={styles.error}>
         <ErrorMessages error={meta.error} />
       </div>
