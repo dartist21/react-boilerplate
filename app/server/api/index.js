@@ -74,6 +74,16 @@ router.get('/actors', (req, res) => {
   });
 });
 
+router.get('/actors/:id', (req, res) => {
+  const actor = find(actors, { id: Number(req.params.id) });
+  if (!actor) {
+    return res.sendStatus(404);
+  }
+  return res.json({
+    data: actor,
+  });
+});
+
 router.get('/movies', (req, res) => {
   res.json({
     data: movies,

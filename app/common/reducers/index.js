@@ -25,6 +25,6 @@ export const getMovies = (state, ids) => ids.map(id => getMovie(state, id));
 export const getAllMovies = state => getMovies(state, Object.keys(state.data.movies));
 
 // basic set of reducers for data entities
-export const getActor = (state, id) => denormalize(id, schemas.movie, state.data);
+export const getActor = (state, id) => denormalize(id, schemas.actor, state.data);
 export const getActors = (state, ids) => ids.map(id => getActor(state, id));
 export const getAllActors = state => getActors(state, Object.keys(state.data.movies));
